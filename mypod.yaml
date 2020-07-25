@@ -1,0 +1,89 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/podIP: 10.40.0.11/32
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"name":"centos-pod","namespace":"default"},"spec":{"containers":[{"image":"centos","name":"centos","stdin":true,"tty":true}]}}
+    kubernetes.io/limit-ranger: 'LimitRanger plugin set: cpu request for container
+      centos'
+  creationTimestamp: "2020-07-22T17:41:01Z"
+  name: centos-pod
+  namespace: default
+  resourceVersion: "231329"
+  selfLink: /api/v1/namespaces/default/pods/centos-pod
+  uid: 828d2c14-cc42-11ea-a7bc-42010a800041
+spec:
+  containers:
+  - image: centos
+    imagePullPolicy: Always
+    name: centos
+    resources:
+      requests:
+        cpu: 100m
+    stdin: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    tty: true
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-csqdt
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: gke-k8-cluster-default-pool-c27a5ccd-v25x
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-csqdt
+    secret:
+      defaultMode: 420
+      secretName: default-token-csqdt
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-07-22T17:41:01Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-07-22T17:41:05Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-07-22T17:41:05Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-07-22T17:41:01Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://24f48b2f32fad80cf24b5894c5261e6e593e8bceabbac6a35fcfeb3f73d697ab
+    image: centos:latest
+    imageID: docker-pullable://centos@sha256:fd84102fc72960dd1b8da0ee3b4c13e3b0c1d2a085de118bc4c97821cd986e02
+    lastState: {}
+    name: centos
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: "2020-07-22T17:41:04Z"
+  hostIP: 10.128.0.2
+  phase: Running
+  podIP: 10.40.0.11
+  qosClass: Burstable
+  startTime: "2020-07-22T17:41:01Z"
