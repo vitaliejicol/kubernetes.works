@@ -1,0 +1,17 @@
+# Default values for chartname.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: test
+redis_image:
+  repository: redis
+  tag: 6.0
+
+service:
+  port: 9090
+  protocol: TCP
+  cpu: "200m"
+  memory: "1Gi"
+
+
+

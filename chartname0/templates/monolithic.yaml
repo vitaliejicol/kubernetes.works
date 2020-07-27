@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+   run: {{ .Chart.Name }}-{{ .Chart.Version }}
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  containers:
+  - image: {{ .Values.redis_image.repository }}:{{ .Values.redis_image.tag }}
+    name: redis
+    resources:
+      cpu: {{ .Values.service.cpu }}
+      memory: {{ .Values.service.memory}}
+
+
+
