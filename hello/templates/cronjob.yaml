@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: {{ .Values.containername }}
-            image: {{ .Values.image_repository }}:{{ .Values.image.tag}}
+            image: {{ .Values.image.repository }}:{{ .Values.image.tag}}
             args:
             - /bin/sh
             - -c
